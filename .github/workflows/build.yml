@@ -1,0 +1,38 @@
+name: "Build"
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.generate.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Generate matrix
+        id: generate
+        run: ./.github/scripts/generate-build-matrix.sh
+
+  docker:
+    needs:
+      - prepare
+    strategy:
+      fail-fast: false
+      matrix:
+        include: ${{ fromJson(needs.prepare.outputs.matrix) }}
+    permissions:
+      contents: read
+      packages: write
+    uses: ./.github/workflows/use-docker-buildx-bake.yml
+    with:
+      version: ${{ matrix.version }}
+      permit-login: true
+      permit-push: ${{ github.event_name != 'pull_request' }}
+      permit-cache: true
+    secrets: inherit
