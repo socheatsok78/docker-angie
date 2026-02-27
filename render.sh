@@ -7,7 +7,7 @@ supported_variants=(
 	"alpine"
 	"minimal"
 	"debian"
-	"rocky"
+	# "rocky"
 	"ubuntu"
 )
 

@@ -41,17 +41,6 @@ target "angie-debian-metadata" {
   ]
 }
 
-target "angie-rocky-metadata" {
-  args = {
-    "ANGIE_VERSION" = "1.10.0"
-    "ANGIE_VARIANT" = "rocky"
-  }
-  tags = [
-    "docker.io/${replace(GITHUB_REPOSITORY, "docker-", "")}:1.10.0-rocky",
-    "ghcr.io/${replace(GITHUB_REPOSITORY, "docker-", "")}:1.10.0-rocky"
-  ]
-}
-
 target "angie-ubuntu-metadata" {
   args = {
     "ANGIE_VERSION" = "1.10.0"

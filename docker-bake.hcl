@@ -58,7 +58,7 @@ group "default" {
     "angie-alpine",
     "angie-minimal",
     "angie-debian",
-    "angie-rocky",
+    // "angie-rocky",
     "angie-ubuntu",
   ]
 }
