@@ -1,6 +1,6 @@
 <picture>
-  <source media="(height: 86px; prefers-color-scheme: dark)" srcset="https://en.angie.software/_static/icons/logo-dark.svg?digest=5dab60787f788e828e8ef8960a35fcba">
-  <source media="(height: 86px; prefers-color-scheme: light)" srcset="https://en.angie.software/_static/icons/logo.svg?digest=ba3df682f79ad1e877d1e607dc782bb7">
+  <source media="(prefers-color-scheme: dark)" srcset="https://en.angie.software/_static/icons/logo-dark.svg?digest=5dab60787f788e828e8ef8960a35fcba">
+  <source media="(prefers-color-scheme: light)" srcset="https://en.angie.software/_static/icons/logo.svg?digest=ba3df682f79ad1e877d1e607dc782bb7">
   <img alt="Angie" src="https://en.angie.software/_static/icons/logo.svg?digest=ba3df682f79ad1e877d1e607dc782bb7" height="86px">
 </picture>
 
