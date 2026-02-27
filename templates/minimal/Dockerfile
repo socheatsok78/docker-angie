@@ -1,6 +1,6 @@
 ARG ANGIE_VERSION
 
-FROM docker.angie.software/angie:${ANGIE_VERSION:-latest} AS angie-console-light
+FROM ghcr.io/socheatsok78/angie:${ANGIE_VERSION:-latest} AS angie-console-light
 
 FROM docker.angie.software/angie:${ANGIE_VERSION}-minimal
 
