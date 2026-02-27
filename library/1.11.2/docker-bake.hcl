@@ -19,17 +19,6 @@ target "angie-alpine-metadata" {
   ]
 }
 
-target "angie-minimal-metadata" {
-  args = {
-    "ANGIE_VERSION" = "1.11.2"
-    "ANGIE_VARIANT" = "minimal"
-  }
-  tags = [
-    "docker.io/${replace(GITHUB_REPOSITORY, "docker-", "")}:1.11.2-minimal",
-    "ghcr.io/${replace(GITHUB_REPOSITORY, "docker-", "")}:1.11.2-minimal"
-  ]
-}
-
 target "angie-debian-metadata" {
   args = {
     "ANGIE_VERSION" = "1.11.2"
@@ -38,6 +27,17 @@ target "angie-debian-metadata" {
   tags = [
     "docker.io/${replace(GITHUB_REPOSITORY, "docker-", "")}:1.11.2-debian",
     "ghcr.io/${replace(GITHUB_REPOSITORY, "docker-", "")}:1.11.2-debian"
+  ]
+}
+
+target "angie-minimal-metadata" {
+  args = {
+    "ANGIE_VERSION" = "1.11.2"
+    "ANGIE_VARIANT" = "minimal"
+  }
+  tags = [
+    "docker.io/${replace(GITHUB_REPOSITORY, "docker-", "")}:1.11.2-minimal",
+    "ghcr.io/${replace(GITHUB_REPOSITORY, "docker-", "")}:1.11.2-minimal"
   ]
 }
 

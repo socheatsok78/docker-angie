@@ -5,8 +5,8 @@ set -e
 outdir="library"
 supported_variants=(
 	"alpine"
-	"minimal"
 	"debian"
+	"minimal"
 	# "rocky"
 	"ubuntu"
 )
