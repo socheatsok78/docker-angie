@@ -16,6 +16,8 @@ To use this image, simply replace `nginx` with `socheatsok78/angie`. For example
 +FROM socheatsok78/angie:minimal
 ```
 
+[Source](https://github.com/socheatsok78/docker-angie) | [Docker Hub](https://hub.docker.com/r/socheatsok78/angie) | [GitHub Container Registry](https://ghcr.io/socheatsok78/angie)
+
 ## Supported tags
 
 The container image tags are created following the official Angie container images, see https://en.angie.software/angie/docs/installation/docker/
