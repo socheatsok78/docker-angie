@@ -2,17 +2,19 @@ target "docker-metadata-action" {}
 
 target "github-metadata-action" {}
 
-target "angie-default-metadata" {}
-
+target "angie-alpine-metadata" {}
 target "angie-minimal-metadata" {}
+target "angie-debian-metadata" {}
+target "angie-rocky-metadata" {}
+target "angie-ubuntu-metadata" {}
 
-target "angie-default" {
+target "angie-alpine" {
   inherits = [
     "docker-metadata-action",
     "github-metadata-action",
-    "angie-default-metadata",
+    "angie-alpine-metadata",
   ]
-  dockerfile = "templates/default/Dockerfile"
+  dockerfile = "templates/alpine/Dockerfile"
 }
 
 target "angie-minimal" {
@@ -24,9 +26,39 @@ target "angie-minimal" {
   dockerfile = "templates/minimal/Dockerfile"
 }
 
+target "angie-debian" {
+  inherits = [
+    "docker-metadata-action",
+    "github-metadata-action",
+    "angie-debian-metadata",
+  ]
+  dockerfile = "templates/debian/Dockerfile"
+}
+
+target "angie-rocky" {
+  inherits = [
+    "docker-metadata-action",
+    "github-metadata-action",
+    "angie-rocky-metadata",
+  ]
+  dockerfile = "templates/rocky/Dockerfile"
+}
+
+target "angie-ubuntu" {
+  inherits = [
+    "docker-metadata-action",
+    "github-metadata-action",
+    "angie-ubuntu-metadata",
+  ]
+  dockerfile = "templates/ubuntu/Dockerfile"
+}
+
 group "default" {
   targets = [
-    "angie-default",
+    "angie-alpine",
     "angie-minimal",
+    "angie-debian",
+    // "angie-rocky",
+    "angie-ubuntu",
   ]
 }

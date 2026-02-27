@@ -1,11 +1,11 @@
 ARG ANGIE_VERSION
-
-FROM docker.angie.software/angie:${ANGIE_VERSION:-latest} AS angie-console-light
-
-FROM docker.angie.software/angie:${ANGIE_VERSION}-minimal
+FROM docker.angie.software/angie:${ANGIE_VERSION}-debian
 
 ADD entrypoint/ /
-RUN apk add --no-cache gettext-envsubst
+RUN apt-get update \
+    && apt-get install --no-install-recommends -y gettext-base \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 RUN ln -s /etc/angie /etc/nginx \
     && ln -s /var/log/angie /var/log/nginx \
@@ -13,8 +13,6 @@ RUN ln -s /etc/angie /etc/nginx \
     && rm -rf /etc/angie/stream.d \
     && sed -i 's/\/etc\/angie\/http.d\/\*\.conf;/\/etc\/angie\/conf.d\/\*\.conf;/g' /etc/angie/angie.conf \
     && sed -i '/#stream {/,/}/d' /etc/angie/angie.conf
-
-COPY --from=angie-console-light /usr/share/angie-console-light /usr/share/angie-console-light
 
 ENTRYPOINT [ "/docker-entrypoint-shim.sh" ]
 CMD [ "angie", "-g", "daemon off;" ]

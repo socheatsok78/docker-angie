@@ -1,10 +1,12 @@
 ARG ANGIE_VERSION
-ARG ANGIE_VARIANT
 
-FROM docker.angie.software/angie:${ANGIE_VERSION:-latest}
+FROM docker.angie.software/angie:${ANGIE_VERSION}-ubuntu
 
 ADD entrypoint/ /
-RUN apk add --no-cache gettext-envsubst
+RUN apt-get update \
+    && apt-get install --no-install-recommends -y gettext-base \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 RUN ln -s /etc/angie /etc/nginx \
     && ln -s /var/log/angie /var/log/nginx \

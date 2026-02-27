@@ -19,7 +19,7 @@ jobs:
         id: generate
         run: ./.github/scripts/generate-build-matrix.sh
 
-  docker:
+  angie:
     needs:
       - prepare
     strategy:
