@@ -31,6 +31,8 @@ target "angie-minimal-metadata" {
   tags = [
     "docker.io/${replace(GITHUB_REPOSITORY, "docker-", "")}:1.11-minimal",
     "ghcr.io/${replace(GITHUB_REPOSITORY, "docker-", "")}:1.11-minimal",
+    "docker.io/${replace(GITHUB_REPOSITORY, "docker-", "")}:minimal",
+    "ghcr.io/${replace(GITHUB_REPOSITORY, "docker-", "")}:minimal",
     "docker.io/${replace(GITHUB_REPOSITORY, "docker-", "")}:1.11.3-minimal",
     "ghcr.io/${replace(GITHUB_REPOSITORY, "docker-", "")}:1.11.3-minimal"
   ]
