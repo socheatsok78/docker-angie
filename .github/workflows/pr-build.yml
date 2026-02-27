@@ -22,7 +22,7 @@ jobs:
         id: generate
         run: ./.github/scripts/generate-pr-build-matrix.sh
 
-  docker:
+  angie:
     needs:
       - prepare
     strategy:
@@ -44,7 +44,7 @@ jobs:
     if: contains(github.event.pull_request.labels.*.name, 'pr-pull')
     runs-on: ubuntu-latest
     needs:
-      - docker
+      - angie
     permissions:
       contents: write
       pull-requests: write
