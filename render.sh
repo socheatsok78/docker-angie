@@ -12,6 +12,7 @@ supported_variants=(
 )
 
 TAGS_FILE="./tags.json"
+rtags=$(jq -r '. | join("\n")' "$TAGS_FILE")
 
 GITHUB_REPOSITORY_OWNER=${GITHUB_REPOSITORY_OWNER:-"socheatsok78"}
 GITHUB_REPOSITORY=${GITHUB_REPOSITORY:-"${GITHUB_REPOSITORY_OWNER}/docker-angie"}
@@ -34,7 +35,7 @@ function dockerbakefile() {
 		echo "  }"
 		echo "  tags = ["
 		short_version=$(echo "$version" | cut -d '.' -f 1-2)
-		if [[ "${version}" == "$(echo "$tags" | grep "$short_version" | head -n1)" ]]; then
+		if [[ "${version}" == "$(echo "$rtags" | grep "$short_version" | head -n1)" ]]; then
 			if [[ "${variant}" == "alpine" ]]; then
 				echo "    \"docker.io/\${replace(GITHUB_REPOSITORY, \"docker-\", \"\")}:${short_version}\","
 				echo "    \"ghcr.io/\${replace(GITHUB_REPOSITORY, \"docker-\", \"\")}:${short_version}\","
@@ -46,6 +47,12 @@ function dockerbakefile() {
 			echo "    \"docker.io/\${replace(GITHUB_REPOSITORY, \"docker-\", \"\")}:${version}\","
 			echo "    \"ghcr.io/\${replace(GITHUB_REPOSITORY, \"docker-\", \"\")}:${version}\","
 		fi
+		if [[ "${variant}" == "minimal" ]]; then
+			if [[ "${version}" == "$(echo "$rtags" | sort -r --version-sort | head -n1)" ]]; then
+				echo "    \"docker.io/\${replace(GITHUB_REPOSITORY, \"docker-\", \"\")}:minimal\","
+				echo "    \"ghcr.io/\${replace(GITHUB_REPOSITORY, \"docker-\", \"\")}:minimal\","
+			fi
+		fi
 		echo "    \"docker.io/\${replace(GITHUB_REPOSITORY, \"docker-\", \"\")}:${version}${variant:+-$variant}\","
 		echo "    \"ghcr.io/\${replace(GITHUB_REPOSITORY, \"docker-\", \"\")}:${version}${variant:+-$variant}\""
 		echo "  ]"
@@ -54,8 +61,7 @@ function dockerbakefile() {
 	done
 }
 
-tags=$(jq -r '. | join("\n")' "$TAGS_FILE")
-echo "$tags" | while read -r version; do
+echo "$rtags" | while read -r version; do
 	# if [ -d "${outdir}/${version}" ]; then
 	#    continue
 	# fi
