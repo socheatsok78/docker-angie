@@ -21,7 +21,7 @@ fi
 echo "File changed:"
 for file in $(git diff "origin/${GITHUB_BASE_REF}" "HEAD" --name-only); do
 	echo "- ${file}"
-	if [[ "${file}" == *"/.empty" ]] || [[ "${file}" == *"/Dockerfile" ]] || [[ "${file}" == *"/docker-bake.hcl" ]]; then
+	if [[ "${file}" == "library/"*"/.empty" ]] || [[ "${file}" == "library/"*"/Dockerfile" ]] || [[ "${file}" == "library/"*"/docker-bake.hcl" ]]; then
 		# Extract target and version from the file path
 		version=$(echo "${file}" | cut -d'/' -f2)
 		# Add to build matrix
