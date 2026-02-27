@@ -3,8 +3,8 @@
   <source media="(prefers-color-scheme: light)" srcset="https://en.angie.software/_static/icons/logo.svg?digest=ba3df682f79ad1e877d1e607dc782bb7">
   <img alt="Angie" src="https://en.angie.software/_static/icons/logo.svg?digest=ba3df682f79ad1e877d1e607dc782bb7" height="86px">
 </picture>
+<br /><br />
 
-## About
 A drop-in replacement container image to NGINX using ANGIE
 
 This image includes the entrypoint scripts found in the NGINX official container image with a few modifications to support ANGIE.
