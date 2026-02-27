@@ -19,9 +19,31 @@ on:
         description: 'Permit using GitHub Actions cache for buildx'
 
 jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.generate.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Generate matrix
+        id: generate
+        uses: docker/bake-action/subaction/matrix@v6
+        with:
+          target: default
+          files: |
+            ./docker-bake.hcl
+            ./library/${{ inputs.version }}/docker-bake.hcl
 
   build:
     runs-on: ubuntu-latest
+    needs:
+      - prepare
+    strategy:
+      fail-fast: false
+      matrix:
+        include: ${{ fromJson(needs.prepare.outputs.matrix) }}
     permissions:
       contents: read
       packages: write
@@ -62,6 +84,7 @@ jobs:
       - name: Build and push
         uses: docker/bake-action@v6
         with:
+          targets: ${{ matrix.target }}
           push: ${{ inputs.permit-push }}
           files: |
             ./docker-bake.hcl
