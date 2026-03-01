@@ -71,10 +71,11 @@ function dockerbakefile() {
 }
 
 echo "$GITHUB_RELEASES" | while read -r version; do
-	# if [ -d "${outdir}/${version}" ]; then
-	#    continue
-	# fi
-	echo "Rendering \"${outdir}/${version}/docker-bake.hcl\" file..."
+	if [ -d "${outdir}/${version}" ]; then
+		echo "WRN: Skipping version ${version} because it already exists."
+		continue
+	fi
+	echo "INF: Generating docker-bake.hcl for version ${version}..."
 	mkdir -p "${outdir}/${version}"
 	dockerbakefile "$version" > "${outdir}/${version}/docker-bake.hcl"
 done
