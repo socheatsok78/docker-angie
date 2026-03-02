@@ -18,9 +18,15 @@ if [ -z "$GITHUB_HEAD_REF" ]; then
   exit 1
 fi
 
+TEMPLATES_CHANGED=false
+
 echo "File changed:"
 for file in $(git diff "origin/${GITHUB_BASE_REF}" "HEAD" --name-only); do
 	echo "- ${file}"
+	if [[ "${file}" == "templates/"*"/Dockerfile" ]]; then
+		TEMPLATES_CHANGED=true
+		break
+	fi
 	if [[ "${file}" == "library/"*"/.empty" ]] || [[ "${file}" == "library/"*"/Dockerfile" ]] || [[ "${file}" == "library/"*"/docker-bake.hcl" ]]; then
 		# Extract target and version from the file path
 		version=$(echo "${file}" | cut -d'/' -f2)
@@ -28,6 +34,12 @@ for file in $(git diff "origin/${GITHUB_BASE_REF}" "HEAD" --name-only); do
 		echo "{\"version\":\"${version}\"}" >> "$BUILD_MATRIX_MANIFEST"
 	fi
 done
+
+# If any template Dockerfile has changed, we need to run the full build matrix generation script to ensure all relevant targets are included.
+if [ "$TEMPLATES_CHANGED" = true ]; then
+	"$(dirname "$0")"/generate-build-matrix.sh
+	exit 0
+fi
 
 # Build JSON array and write to GITHUB_OUTPUT, quoting to prevent word splitting.
 echo "Generating build matrix..."

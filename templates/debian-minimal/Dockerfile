@@ -16,16 +16,13 @@ RUN set -x \
      && apt-get install --no-install-recommends --no-install-suggests -y \
           angie=${ANGIE_VERSION}-${PKG_RELEASE} \
           angie-console-light \
+     && apt-get install --no-install-recommends --no-install-suggests -y \
+          gettext-base \
      && rm -Rf /var/lib/apt/lists \
      && ln -sf /dev/stdout /var/log/angie/access.log \
      && ln -sf /dev/stderr /var/log/angie/error.log
 
 ADD entrypoint/ /
-RUN apt-get update \
-    && apt-get install --no-install-recommends -y gettext-base \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
-
 RUN ln -s /etc/angie /etc/nginx \
     && ln -s /var/log/angie /var/log/nginx \
     && mv /etc/angie/http.d/ /etc/angie/conf.d/ \
