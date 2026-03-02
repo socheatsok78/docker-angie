@@ -10,6 +10,7 @@ GITHUB_OUTPUT=${GITHUB_OUTPUT:-/dev/null}
 
 RUNNER_TEMP=${RUNNER_TEMP:-$(pwd)}
 BUILD_MATRIX_MANIFEST=$(mktemp -p "${RUNNER_TEMP}")
+trap 'rm -f "$BUILD_MATRIX_MANIFEST"' EXIT
 
 echo "File changed:"
 for file in library/*/docker-bake.hcl; do
@@ -29,6 +30,3 @@ cat "$BUILD_MATRIX_MANIFEST" | sort -r | uniq | jq -s '.'
 # Set the output variable for GitHub Actions
 matrix_json=$(cat "$BUILD_MATRIX_MANIFEST" | sort | uniq | jq -sc '.')
 echo "matrix=${matrix_json}" >> "$GITHUB_OUTPUT"
-
-# Clean up
-rm -f "$BUILD_MATRIX_MANIFEST" || true
