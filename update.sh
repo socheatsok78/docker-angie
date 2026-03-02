@@ -6,9 +6,11 @@ OUTDIR="library"
 SUPPORTED_VARIANTS=(
 	"alpine"
 	"debian"
+	"debian-minimal"
 	"minimal"
 	# "rocky"
 	"ubuntu"
+	"ubuntu-minimal"
 )
 
 function releases() {

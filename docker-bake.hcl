@@ -33,6 +33,18 @@ target "angie-debian" {
     "linux/arm64",
   ]
 }
+target "angie-debian-minimal" {
+  inherits = [
+    "docker-metadata-action",
+    "github-metadata-action",
+    "angie-debian-minimal-metadata",
+  ]
+  dockerfile = "templates/debian-minimal/Dockerfile"
+  platforms = [
+    "linux/amd64",
+    "linux/arm64",
+  ]
+}
 
 target "angie-minimal" {
   inherits = [
@@ -73,12 +85,27 @@ target "angie-ubuntu" {
   ]
 }
 
+target "angie-ubuntu-minimal" {
+  inherits = [
+    "docker-metadata-action",
+    "github-metadata-action",
+    "angie-ubuntu-minimal-metadata",
+  ]
+  dockerfile = "templates/ubuntu-minimal/Dockerfile"
+  platforms = [
+    "linux/amd64",
+    "linux/arm64",
+  ]
+}
+
 group "default" {
   targets = [
     "angie-alpine",
     "angie-debian",
+    "angie-debian-minimal",
     "angie-minimal",
     // "angie-rocky",
     "angie-ubuntu",
+    "angie-ubuntu-minimal",
   ]
 }
