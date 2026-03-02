@@ -2,8 +2,8 @@
 
 set -e
 
-outdir="library"
-supported_variants=(
+OUTDIR="library"
+SUPPORTED_VARIANTS=(
 	"alpine"
 	"debian"
 	"minimal"
@@ -36,7 +36,7 @@ function dockerbakefile() {
 	echo "  default = \"${GITHUB_REPOSITORY}\""
 	echo "}"
 	echo ""
-	for variant in "${supported_variants[@]}"; do
+	for variant in "${SUPPORTED_VARIANTS[@]}"; do
 		echo "target \"angie-${variant}-metadata\" {"
 		echo "  args = {"
 		echo "    \"ANGIE_VERSION\" = \"${version}\""
@@ -71,10 +71,11 @@ function dockerbakefile() {
 }
 
 function main() {
+	local overwrite=false
 	while [ "$#" -gt 0 ]; do
 		case "$1" in
 			--outdir)
-				outdir="$2"
+				OUTDIR="$2"
 				shift 2
 				;;
 			--overwrite)
@@ -90,15 +91,15 @@ function main() {
 	done
 	echo "$GITHUB_RELEASES" | while read -r version; do
 		if [ "${overwrite}" = true ]; then
-			rm -rf "${outdir:?}/${version}"
+			rm -rf "${OUTDIR:?}/${version}"
 		fi
-		if [ -d "${outdir:?}/${version}" ]; then
+		if [ -d "${OUTDIR:?}/${version}" ]; then
 			echo "WRN: Skipping version ${version} because it already exists."
 			continue
 		fi
 		echo "INF: Generating files for release ${version}..."
-		mkdir -p "${outdir:?}/${version}"
-		dockerbakefile "$version" > "${outdir:?}/${version}/docker-bake.hcl"
+		mkdir -p "${OUTDIR:?}/${version}"
+		dockerbakefile "$version" > "${OUTDIR:?}/${version}/docker-bake.hcl"
 	done
 }
 
