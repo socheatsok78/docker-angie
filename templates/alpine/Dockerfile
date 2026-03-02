@@ -1,5 +1,5 @@
 ARG ANGIE_VERSION
-FROM docker.angie.software/angie:${ANGIE_VERSION}-alpine
+FROM docker.angie.software/angie:${ANGIE_VERSION}-alpine AS base
 
 ADD entrypoint/ /
 RUN apk add --no-cache gettext-envsubst
@@ -11,5 +11,8 @@ RUN ln -s /etc/angie /etc/nginx \
     && sed -i 's/\/etc\/angie\/http.d\/\*\.conf;/\/etc\/angie\/conf.d\/\*\.conf;/g' /etc/angie/angie.conf \
     && sed -i '/#stream {/,/}/d' /etc/angie/angie.conf
 
+FROM scratch
+COPY --from=base / /
+EXPOSE 80/tcp
 ENTRYPOINT [ "/docker-entrypoint-shim.sh" ]
 CMD [ "angie", "-g", "daemon off;" ]
