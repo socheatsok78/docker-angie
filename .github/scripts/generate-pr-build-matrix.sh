@@ -26,8 +26,6 @@ for file in $(git diff "origin/${GITHUB_BASE_REF}" "HEAD" --name-only); do
 	echo "- ${file}"
 	if [[ "${file}" == "templates/"*"/Dockerfile" ]]; then
 		TEMPLATES_CHANGED=true
-		echo "::warning::The template files have changed. Running the full build matrix generation script to ensure all relevant targets are included."
-		break
 	fi
 	if [[ "${file}" == "library/"*"/.empty" ]] || [[ "${file}" == "library/"*"/Dockerfile" ]] || [[ "${file}" == "library/"*"/docker-bake.hcl" ]]; then
 		# Extract target and version from the file path
@@ -39,6 +37,7 @@ done
 
 # If any template Dockerfile has changed, we need to run the full build matrix generation script to ensure all relevant targets are included.
 if [ "$TEMPLATES_CHANGED" = true ]; then
+	echo "::warning::The template files have changed. Running the full build matrix generation script to ensure all relevant targets are included."
 	"$(dirname "$0")"/generate-build-matrix.sh
 	exit 0
 fi
