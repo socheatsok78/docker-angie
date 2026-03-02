@@ -71,14 +71,34 @@ function dockerbakefile() {
 }
 
 function main() {
+	while [ "$#" -gt 0 ]; do
+		case "$1" in
+			--outdir)
+				outdir="$2"
+				shift 2
+				;;
+			--overwrite)
+				overwrite=true
+				echo "INF: Overwrite mode enabled, existing versions will be overwritten."
+				shift 1
+				;;
+			*)
+				echo "Usage: $0 [--overwrite] [--outdir <output directory>]"
+				exit 1
+				;;
+		esac
+	done
 	echo "$GITHUB_RELEASES" | while read -r version; do
-		if [ -d "${outdir}/${version}" ]; then
+		if [ "${overwrite}" = true ]; then
+			rm -rf "${outdir:?}/${version}"
+		fi
+		if [ -d "${outdir:?}/${version}" ]; then
 			echo "WRN: Skipping version ${version} because it already exists."
 			continue
 		fi
-		echo "INF: Generating docker-bake.hcl for version ${version}..."
-		mkdir -p "${outdir}/${version}"
-		dockerbakefile "$version" > "${outdir}/${version}/docker-bake.hcl"
+		echo "INF: Generating files for release ${version}..."
+		mkdir -p "${outdir:?}/${version}"
+		dockerbakefile "$version" > "${outdir:?}/${version}/docker-bake.hcl"
 	done
 }
 
