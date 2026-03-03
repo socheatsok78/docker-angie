@@ -5,52 +5,108 @@ variable "GITHUB_REPOSITORY_OWNER" {
 }
 
 variable "GITHUB_REPOSITORY" {
-  default = "socheatsok78/docker-angie"
+  default = "${GITHUB_REPOSITORY_OWNER}/docker-angie"
+}
+
+variable "REPOSITORY" {
+  default = replace(GITHUB_REPOSITORY, "docker-", "")
 }
 
 target "angie-alpine-metadata" {
+  dockerfile = "templates/alpine/Dockerfile"
   args = {
     "ANGIE_VERSION" = "1.10.2"
     "ANGIE_VARIANT" = "alpine"
   }
+  platform = [
+    "linux/amd64",
+    "linux/arm64",
+  ]
   tags = [
-    "docker.io/${replace(GITHUB_REPOSITORY, "docker-", "")}:1.10.2",
-    "ghcr.io/${replace(GITHUB_REPOSITORY, "docker-", "")}:1.10.2",
-    "docker.io/${replace(GITHUB_REPOSITORY, "docker-", "")}:1.10.2-alpine",
-    "ghcr.io/${replace(GITHUB_REPOSITORY, "docker-", "")}:1.10.2-alpine"
+    "docker.io/${REPOSITORY}:1.10.2",
+    "ghcr.io/${REPOSITORY}:1.10.2",
+    "docker.io/${REPOSITORY}:1.10.2-alpine",
+    "ghcr.io/${REPOSITORY}:1.10.2-alpine"
   ]
 }
 
 target "angie-debian-metadata" {
+  dockerfile = "templates/debian/Dockerfile"
   args = {
     "ANGIE_VERSION" = "1.10.2"
     "ANGIE_VARIANT" = "debian"
   }
+  platform = [
+    "linux/amd64",
+    "linux/arm64",
+  ]
   tags = [
-    "docker.io/${replace(GITHUB_REPOSITORY, "docker-", "")}:1.10.2-debian",
-    "ghcr.io/${replace(GITHUB_REPOSITORY, "docker-", "")}:1.10.2-debian"
+    "docker.io/${REPOSITORY}:1.10.2-debian",
+    "ghcr.io/${REPOSITORY}:1.10.2-debian"
+  ]
+}
+
+target "angie-debian-minimal-metadata" {
+  dockerfile = "templates/debian-minimal/Dockerfile"
+  args = {
+    "ANGIE_VERSION" = "1.10.2"
+    "ANGIE_VARIANT" = "debian-minimal"
+  }
+  platform = [
+    "linux/amd64",
+    "linux/arm64",
+  ]
+  tags = [
+    "docker.io/${REPOSITORY}:1.10.2-debian-minimal",
+    "ghcr.io/${REPOSITORY}:1.10.2-debian-minimal"
   ]
 }
 
 target "angie-minimal-metadata" {
+  dockerfile = "templates/minimal/Dockerfile"
   args = {
     "ANGIE_VERSION" = "1.10.2"
     "ANGIE_VARIANT" = "minimal"
   }
+  platform = [
+    "linux/amd64",
+    "linux/arm64",
+  ]
   tags = [
-    "docker.io/${replace(GITHUB_REPOSITORY, "docker-", "")}:1.10.2-minimal",
-    "ghcr.io/${replace(GITHUB_REPOSITORY, "docker-", "")}:1.10.2-minimal"
+    "docker.io/${REPOSITORY}:1.10.2-minimal",
+    "ghcr.io/${REPOSITORY}:1.10.2-minimal"
   ]
 }
 
 target "angie-ubuntu-metadata" {
+  dockerfile = "templates/ubuntu/Dockerfile"
   args = {
     "ANGIE_VERSION" = "1.10.2"
     "ANGIE_VARIANT" = "ubuntu"
   }
+  platform = [
+    "linux/amd64",
+    "linux/arm64",
+  ]
   tags = [
-    "docker.io/${replace(GITHUB_REPOSITORY, "docker-", "")}:1.10.2-ubuntu",
-    "ghcr.io/${replace(GITHUB_REPOSITORY, "docker-", "")}:1.10.2-ubuntu"
+    "docker.io/${REPOSITORY}:1.10.2-ubuntu",
+    "ghcr.io/${REPOSITORY}:1.10.2-ubuntu"
+  ]
+}
+
+target "angie-ubuntu-minimal-metadata" {
+  dockerfile = "templates/ubuntu-minimal/Dockerfile"
+  args = {
+    "ANGIE_VERSION" = "1.10.2"
+    "ANGIE_VARIANT" = "ubuntu-minimal"
+  }
+  platform = [
+    "linux/amd64",
+    "linux/arm64",
+  ]
+  tags = [
+    "docker.io/${REPOSITORY}:1.10.2-ubuntu-minimal",
+    "ghcr.io/${REPOSITORY}:1.10.2-ubuntu-minimal"
   ]
 }
 
