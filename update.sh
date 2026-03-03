@@ -56,6 +56,7 @@ function dockerbakefile() {
 			manifest=$(docker manifest inspect "docker.angie.software/angie:${version}${variant:+-$variant}" 2>/dev/null)
 			if [[ $? -ne 0 ]]; then
 				stderr "WRN: Failed to fetch manifest for version ${version}${variant:+-$variant}, skipping."
+				echo "  output = [{ type = \"cacheonly\" }]"
 				echo "}"
 				echo ""
 				continue
@@ -63,6 +64,7 @@ function dockerbakefile() {
 		fi
 		if [[ "${manifest}" == "" ]]; then
 			stderr "WRN: No manifest found for version ${version}${variant:+-$variant}, skipping."
+			echo "  output = [{ type = \"cacheonly\" }]"
 			echo "}"
 			echo ""
 			continue

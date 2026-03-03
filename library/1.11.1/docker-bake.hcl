@@ -13,6 +13,7 @@ variable "REPOSITORY" {
 }
 
 target "angie-alpine-metadata" {
+  output = [{ type = "cacheonly" }]
 }
 
 target "angie-debian-metadata" {
@@ -94,4 +95,3 @@ target "angie-ubuntu-minimal-metadata" {
     "ghcr.io/${REPOSITORY}:1.11.1-ubuntu-minimal"
   ]
 }
-
