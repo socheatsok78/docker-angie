@@ -75,7 +75,7 @@ function dockerbakefile() {
 		echo "    \"ANGIE_VERSION\" = \"${version}\""
 		echo "    \"ANGIE_VARIANT\" = \"${variant}\""
 		echo "  }"
-		echo "  platform = ["
+		echo "  platforms = ["
 		for platform in $(echo "${manifest}" | jq -r '.manifests[].platform | select(.os == "linux") | "\(.os)/\(.architecture)"'); do
 			echo "    \"${platform}\","
 		done
