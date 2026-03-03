@@ -5,7 +5,11 @@ variable "GITHUB_REPOSITORY_OWNER" {
 }
 
 variable "GITHUB_REPOSITORY" {
-  default = "socheatsok78/docker-angie"
+  default = "${GITHUB_REPOSITORY_OWNER}/docker-angie"
+}
+
+variable "REPOSITORY" {
+  default = replace(GITHUB_REPOSITORY, "docker-", "")
 }
 
 target "angie-alpine-metadata" {
@@ -13,15 +17,19 @@ target "angie-alpine-metadata" {
     "ANGIE_VERSION" = "1.10.3"
     "ANGIE_VARIANT" = "alpine"
   }
+  platform = [
+    "linux/amd64",
+    "linux/arm64",
+  ]
   tags = [
-    "docker.io/${replace(GITHUB_REPOSITORY, "docker-", "")}:1.10",
-    "ghcr.io/${replace(GITHUB_REPOSITORY, "docker-", "")}:1.10",
-    "docker.io/${replace(GITHUB_REPOSITORY, "docker-", "")}:1.10-alpine",
-    "ghcr.io/${replace(GITHUB_REPOSITORY, "docker-", "")}:1.10-alpine",
-    "docker.io/${replace(GITHUB_REPOSITORY, "docker-", "")}:1.10.3",
-    "ghcr.io/${replace(GITHUB_REPOSITORY, "docker-", "")}:1.10.3",
-    "docker.io/${replace(GITHUB_REPOSITORY, "docker-", "")}:1.10.3-alpine",
-    "ghcr.io/${replace(GITHUB_REPOSITORY, "docker-", "")}:1.10.3-alpine"
+    "docker.io/${REPOSITORY}:1.10",
+    "ghcr.io/${REPOSITORY}:1.10",
+    "docker.io/${REPOSITORY}:1.10-alpine",
+    "ghcr.io/${REPOSITORY}:1.10-alpine",
+    "docker.io/${REPOSITORY}:1.10.3",
+    "ghcr.io/${REPOSITORY}:1.10.3",
+    "docker.io/${REPOSITORY}:1.10.3-alpine",
+    "ghcr.io/${REPOSITORY}:1.10.3-alpine"
   ]
 }
 
@@ -30,11 +38,15 @@ target "angie-debian-metadata" {
     "ANGIE_VERSION" = "1.10.3"
     "ANGIE_VARIANT" = "debian"
   }
+  platform = [
+    "linux/amd64",
+    "linux/arm64",
+  ]
   tags = [
-    "docker.io/${replace(GITHUB_REPOSITORY, "docker-", "")}:1.10-debian",
-    "ghcr.io/${replace(GITHUB_REPOSITORY, "docker-", "")}:1.10-debian",
-    "docker.io/${replace(GITHUB_REPOSITORY, "docker-", "")}:1.10.3-debian",
-    "ghcr.io/${replace(GITHUB_REPOSITORY, "docker-", "")}:1.10.3-debian"
+    "docker.io/${REPOSITORY}:1.10-debian",
+    "ghcr.io/${REPOSITORY}:1.10-debian",
+    "docker.io/${REPOSITORY}:1.10.3-debian",
+    "ghcr.io/${REPOSITORY}:1.10.3-debian"
   ]
 }
 
@@ -43,11 +55,15 @@ target "angie-debian-minimal-metadata" {
     "ANGIE_VERSION" = "1.10.3"
     "ANGIE_VARIANT" = "debian-minimal"
   }
+  platform = [
+    "linux/amd64",
+    "linux/arm64",
+  ]
   tags = [
-    "docker.io/${replace(GITHUB_REPOSITORY, "docker-", "")}:1.10-debian-minimal",
-    "ghcr.io/${replace(GITHUB_REPOSITORY, "docker-", "")}:1.10-debian-minimal",
-    "docker.io/${replace(GITHUB_REPOSITORY, "docker-", "")}:1.10.3-debian-minimal",
-    "ghcr.io/${replace(GITHUB_REPOSITORY, "docker-", "")}:1.10.3-debian-minimal"
+    "docker.io/${REPOSITORY}:1.10-debian-minimal",
+    "ghcr.io/${REPOSITORY}:1.10-debian-minimal",
+    "docker.io/${REPOSITORY}:1.10.3-debian-minimal",
+    "ghcr.io/${REPOSITORY}:1.10.3-debian-minimal"
   ]
 }
 
@@ -56,11 +72,15 @@ target "angie-minimal-metadata" {
     "ANGIE_VERSION" = "1.10.3"
     "ANGIE_VARIANT" = "minimal"
   }
+  platform = [
+    "linux/amd64",
+    "linux/arm64",
+  ]
   tags = [
-    "docker.io/${replace(GITHUB_REPOSITORY, "docker-", "")}:1.10-minimal",
-    "ghcr.io/${replace(GITHUB_REPOSITORY, "docker-", "")}:1.10-minimal",
-    "docker.io/${replace(GITHUB_REPOSITORY, "docker-", "")}:1.10.3-minimal",
-    "ghcr.io/${replace(GITHUB_REPOSITORY, "docker-", "")}:1.10.3-minimal"
+    "docker.io/${REPOSITORY}:1.10-minimal",
+    "ghcr.io/${REPOSITORY}:1.10-minimal",
+    "docker.io/${REPOSITORY}:1.10.3-minimal",
+    "ghcr.io/${REPOSITORY}:1.10.3-minimal"
   ]
 }
 
@@ -69,11 +89,15 @@ target "angie-ubuntu-metadata" {
     "ANGIE_VERSION" = "1.10.3"
     "ANGIE_VARIANT" = "ubuntu"
   }
+  platform = [
+    "linux/amd64",
+    "linux/arm64",
+  ]
   tags = [
-    "docker.io/${replace(GITHUB_REPOSITORY, "docker-", "")}:1.10-ubuntu",
-    "ghcr.io/${replace(GITHUB_REPOSITORY, "docker-", "")}:1.10-ubuntu",
-    "docker.io/${replace(GITHUB_REPOSITORY, "docker-", "")}:1.10.3-ubuntu",
-    "ghcr.io/${replace(GITHUB_REPOSITORY, "docker-", "")}:1.10.3-ubuntu"
+    "docker.io/${REPOSITORY}:1.10-ubuntu",
+    "ghcr.io/${REPOSITORY}:1.10-ubuntu",
+    "docker.io/${REPOSITORY}:1.10.3-ubuntu",
+    "ghcr.io/${REPOSITORY}:1.10.3-ubuntu"
   ]
 }
 
@@ -82,11 +106,15 @@ target "angie-ubuntu-minimal-metadata" {
     "ANGIE_VERSION" = "1.10.3"
     "ANGIE_VARIANT" = "ubuntu-minimal"
   }
+  platform = [
+    "linux/amd64",
+    "linux/arm64",
+  ]
   tags = [
-    "docker.io/${replace(GITHUB_REPOSITORY, "docker-", "")}:1.10-ubuntu-minimal",
-    "ghcr.io/${replace(GITHUB_REPOSITORY, "docker-", "")}:1.10-ubuntu-minimal",
-    "docker.io/${replace(GITHUB_REPOSITORY, "docker-", "")}:1.10.3-ubuntu-minimal",
-    "ghcr.io/${replace(GITHUB_REPOSITORY, "docker-", "")}:1.10.3-ubuntu-minimal"
+    "docker.io/${REPOSITORY}:1.10-ubuntu-minimal",
+    "ghcr.io/${REPOSITORY}:1.10-ubuntu-minimal",
+    "docker.io/${REPOSITORY}:1.10.3-ubuntu-minimal",
+    "ghcr.io/${REPOSITORY}:1.10.3-ubuntu-minimal"
   ]
 }
 
