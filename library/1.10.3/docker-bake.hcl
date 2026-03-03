@@ -13,6 +13,7 @@ variable "REPOSITORY" {
 }
 
 target "angie-alpine-metadata" {
+  dockerfile = "templates/alpine/Dockerfile"
   args = {
     "ANGIE_VERSION" = "1.10.3"
     "ANGIE_VARIANT" = "alpine"
@@ -34,6 +35,7 @@ target "angie-alpine-metadata" {
 }
 
 target "angie-debian-metadata" {
+  dockerfile = "templates/debian/Dockerfile"
   args = {
     "ANGIE_VERSION" = "1.10.3"
     "ANGIE_VARIANT" = "debian"
@@ -51,6 +53,7 @@ target "angie-debian-metadata" {
 }
 
 target "angie-debian-minimal-metadata" {
+  dockerfile = "templates/debian-minimal/Dockerfile"
   args = {
     "ANGIE_VERSION" = "1.10.3"
     "ANGIE_VARIANT" = "debian-minimal"
@@ -68,6 +71,7 @@ target "angie-debian-minimal-metadata" {
 }
 
 target "angie-minimal-metadata" {
+  dockerfile = "templates/minimal/Dockerfile"
   args = {
     "ANGIE_VERSION" = "1.10.3"
     "ANGIE_VARIANT" = "minimal"
@@ -85,6 +89,7 @@ target "angie-minimal-metadata" {
 }
 
 target "angie-ubuntu-metadata" {
+  dockerfile = "templates/ubuntu/Dockerfile"
   args = {
     "ANGIE_VERSION" = "1.10.3"
     "ANGIE_VARIANT" = "ubuntu"
@@ -102,6 +107,7 @@ target "angie-ubuntu-metadata" {
 }
 
 target "angie-ubuntu-minimal-metadata" {
+  dockerfile = "templates/ubuntu-minimal/Dockerfile"
   args = {
     "ANGIE_VERSION" = "1.10.3"
     "ANGIE_VARIANT" = "ubuntu-minimal"
