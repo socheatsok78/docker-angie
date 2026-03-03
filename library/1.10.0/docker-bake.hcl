@@ -18,7 +18,7 @@ target "angie-alpine-metadata" {
     "ANGIE_VERSION" = "1.10.0"
     "ANGIE_VARIANT" = "alpine"
   }
-  platform = [
+  platforms = [
     "linux/amd64",
     "linux/arm64",
   ]
@@ -36,7 +36,7 @@ target "angie-debian-metadata" {
     "ANGIE_VERSION" = "1.10.0"
     "ANGIE_VARIANT" = "debian"
   }
-  platform = [
+  platforms = [
     "linux/amd64",
     "linux/arm64",
   ]
@@ -52,7 +52,7 @@ target "angie-debian-minimal-metadata" {
     "ANGIE_VERSION" = "1.10.0"
     "ANGIE_VARIANT" = "debian-minimal"
   }
-  platform = [
+  platforms = [
     "linux/amd64",
     "linux/arm64",
   ]
@@ -68,7 +68,7 @@ target "angie-minimal-metadata" {
     "ANGIE_VERSION" = "1.10.0"
     "ANGIE_VARIANT" = "minimal"
   }
-  platform = [
+  platforms = [
     "linux/amd64",
     "linux/arm64",
   ]
@@ -84,7 +84,7 @@ target "angie-ubuntu-metadata" {
     "ANGIE_VERSION" = "1.10.0"
     "ANGIE_VARIANT" = "ubuntu"
   }
-  platform = [
+  platforms = [
     "linux/amd64",
     "linux/arm64",
   ]
@@ -100,7 +100,7 @@ target "angie-ubuntu-minimal-metadata" {
     "ANGIE_VERSION" = "1.10.0"
     "ANGIE_VARIANT" = "ubuntu-minimal"
   }
-  platform = [
+  platforms = [
     "linux/amd64",
     "linux/arm64",
   ]
@@ -109,4 +109,3 @@ target "angie-ubuntu-minimal-metadata" {
     "ghcr.io/${REPOSITORY}:1.10.0-ubuntu-minimal"
   ]
 }
-
