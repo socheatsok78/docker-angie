@@ -31,7 +31,7 @@ END
 auto_envsubst() {
   local template_dir="${ANGIE_ENVSUBST_TEMPLATE_DIR:-/etc/angie/templates}"
   local suffix="${ANGIE_ENVSUBST_TEMPLATE_SUFFIX:-.template}"
-  local output_dir="${ANGIE_ENVSUBST_OUTPUT_DIR:-/etc/angie.conf.d}"
+  local output_dir="${ANGIE_ENVSUBST_OUTPUT_DIR:-/etc/angie/conf.d}"
   local stream_suffix="${ANGIE_ENVSUBST_STREAM_TEMPLATE_SUFFIX:-.stream-template}"
   local stream_output_dir="${ANGIE_ENVSUBST_STREAM_OUTPUT_DIR:-/etc/angie/stream-conf.d}"
   local filter="${ANGIE_ENVSUBST_FILTER:-}"
