@@ -75,10 +75,10 @@ group "default" {
   targets = [
     "angie-alpine",
     "angie-debian",
-    "angie-debian-minimal",
+    // "angie-debian-minimal",
     "angie-minimal",
     // "angie-rocky",
     "angie-ubuntu",
-    "angie-ubuntu-minimal",
+    // "angie-ubuntu-minimal",
   ]
 }
