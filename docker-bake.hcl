@@ -1,12 +1,13 @@
 target "docker-metadata-action" {}
-
 target "github-metadata-action" {}
 
 target "angie-alpine-metadata" {}
 target "angie-debian-metadata" {}
+target "angie-debian-minimal-metadata" {}
 target "angie-minimal-metadata" {}
 target "angie-rocky-metadata" {}
 target "angie-ubuntu-metadata" {}
+target "angie-ubuntu-minimal-metadata" {}
 
 target "angie-alpine" {
   inherits = [
@@ -15,10 +16,6 @@ target "angie-alpine" {
     "angie-alpine-metadata",
   ]
   dockerfile = "templates/alpine/Dockerfile"
-  platforms = [
-    "linux/amd64",
-    "linux/arm64",
-  ]
 }
 
 target "angie-debian" {
@@ -28,10 +25,6 @@ target "angie-debian" {
     "angie-debian-metadata",
   ]
   dockerfile = "templates/debian/Dockerfile"
-  platforms = [
-    "linux/amd64",
-    "linux/arm64",
-  ]
 }
 target "angie-debian-minimal" {
   inherits = [
@@ -40,10 +33,6 @@ target "angie-debian-minimal" {
     "angie-debian-minimal-metadata",
   ]
   dockerfile = "templates/debian-minimal/Dockerfile"
-  platforms = [
-    "linux/amd64",
-    "linux/arm64",
-  ]
 }
 
 target "angie-minimal" {
@@ -53,10 +42,6 @@ target "angie-minimal" {
     "angie-minimal-metadata",
   ]
   dockerfile = "templates/minimal/Dockerfile"
-  platforms = [
-    "linux/amd64",
-    "linux/arm64",
-  ]
 }
 
 target "angie-rocky" {
@@ -66,10 +51,6 @@ target "angie-rocky" {
     "angie-rocky-metadata",
   ]
   dockerfile = "templates/rocky/Dockerfile"
-  platforms = [
-    "linux/amd64",
-    "linux/arm64",
-  ]
 }
 
 target "angie-ubuntu" {
@@ -79,10 +60,6 @@ target "angie-ubuntu" {
     "angie-ubuntu-metadata",
   ]
   dockerfile = "templates/ubuntu/Dockerfile"
-  platforms = [
-    "linux/amd64",
-    "linux/arm64",
-  ]
 }
 
 target "angie-ubuntu-minimal" {
@@ -92,10 +69,6 @@ target "angie-ubuntu-minimal" {
     "angie-ubuntu-minimal-metadata",
   ]
   dockerfile = "templates/ubuntu-minimal/Dockerfile"
-  platforms = [
-    "linux/amd64",
-    "linux/arm64",
-  ]
 }
 
 group "default" {
