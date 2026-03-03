@@ -68,6 +68,7 @@ function dockerbakefile() {
 			continue
 		fi
 		stderr "INF: Found manifest for version ${version}${variant:+-$variant}."
+		echo "  dockerfile = \"templates/${variant}/Dockerfile\""
 		echo "  args = {"
 		echo "    \"ANGIE_VERSION\" = \"${version}\""
 		echo "    \"ANGIE_VARIANT\" = \"${variant}\""
