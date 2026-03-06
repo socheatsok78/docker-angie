@@ -1,5 +1,5 @@
 ARG ANGIE_VERSION
-FROM docker.angie.software/angie:${ANGIE_VERSION}-rocky AS base
+FROM docker.socheat.dev/docker.angie.software/angie:${ANGIE_VERSION}-rocky AS base
 
 ADD entrypoint/ /
 RUN dnf install -y gettext \

@@ -1,5 +1,5 @@
 ARG ANGIE_VERSION
-FROM docker.angie.software/angie:${ANGIE_VERSION}-minimal AS base
+FROM docker.socheat.dev/docker.angie.software/angie:${ANGIE_VERSION}-minimal AS base
 
 ADD entrypoint/ /
 RUN apk add --no-cache gettext-envsubst
