@@ -11,13 +11,17 @@ SUPPORTED_VARIANTS=(
 	"ubuntu-minimal"
 )
 
+# Fetch all releases from GitHub and extract the version numbers.
+# The official releases are tagged in the format "Angie-1.10.1", "Angie-1.11.0", etc.
 function releases() {
 	gh api repos/webserver-llc/angie/releases --jq '.[].tag_name' \
 		| cut -d- -f2
 }
 
+# Filter releases to only include versions 1.10, 1.11
+# The 1.12 does not exist yet, but we want to prepare for it in advance.
 function releases_filter() {
-	grep -i -E "1.10|1.11"
+	grep -i -E "^(1.10|1.11|1.12)"
 }
 
 function stdout() {
