@@ -1,5 +1,5 @@
 ARG ANGIE_VERSION
-FROM docker.angie.software/angie:${ANGIE_VERSION}-ubuntu AS base
+FROM docker.socheat.dev/docker.angie.software/angie:${ANGIE_VERSION}-ubuntu AS base
 
 ADD entrypoint/ /
 RUN apt-get update \
