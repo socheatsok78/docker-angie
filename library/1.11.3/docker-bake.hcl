@@ -23,10 +23,6 @@ target "angie-alpine-metadata" {
     "linux/arm64",
   ]
   tags = [
-    "docker.io/${REPOSITORY}:1.11",
-    "ghcr.io/${REPOSITORY}:1.11",
-    "docker.io/${REPOSITORY}:1.11-alpine",
-    "ghcr.io/${REPOSITORY}:1.11-alpine",
     "docker.io/${REPOSITORY}:1.11.3",
     "ghcr.io/${REPOSITORY}:1.11.3",
     "docker.io/${REPOSITORY}:1.11.3-alpine",
@@ -45,8 +41,6 @@ target "angie-debian-metadata" {
     "linux/arm64",
   ]
   tags = [
-    "docker.io/${REPOSITORY}:1.11-debian",
-    "ghcr.io/${REPOSITORY}:1.11-debian",
     "docker.io/${REPOSITORY}:1.11.3-debian",
     "ghcr.io/${REPOSITORY}:1.11.3-debian"
   ]
@@ -63,8 +57,6 @@ target "angie-debian-minimal-metadata" {
     "linux/arm64",
   ]
   tags = [
-    "docker.io/${REPOSITORY}:1.11-debian-minimal",
-    "ghcr.io/${REPOSITORY}:1.11-debian-minimal",
     "docker.io/${REPOSITORY}:1.11.3-debian-minimal",
     "ghcr.io/${REPOSITORY}:1.11.3-debian-minimal"
   ]
@@ -81,10 +73,6 @@ target "angie-minimal-metadata" {
     "linux/arm64",
   ]
   tags = [
-    "docker.io/${REPOSITORY}:1.11-minimal",
-    "ghcr.io/${REPOSITORY}:1.11-minimal",
-    "docker.io/${REPOSITORY}:minimal",
-    "ghcr.io/${REPOSITORY}:minimal",
     "docker.io/${REPOSITORY}:1.11.3-minimal",
     "ghcr.io/${REPOSITORY}:1.11.3-minimal"
   ]
@@ -101,8 +89,6 @@ target "angie-ubuntu-metadata" {
     "linux/arm64",
   ]
   tags = [
-    "docker.io/${REPOSITORY}:1.11-ubuntu",
-    "ghcr.io/${REPOSITORY}:1.11-ubuntu",
     "docker.io/${REPOSITORY}:1.11.3-ubuntu",
     "ghcr.io/${REPOSITORY}:1.11.3-ubuntu"
   ]
@@ -119,9 +105,8 @@ target "angie-ubuntu-minimal-metadata" {
     "linux/arm64",
   ]
   tags = [
-    "docker.io/${REPOSITORY}:1.11-ubuntu-minimal",
-    "ghcr.io/${REPOSITORY}:1.11-ubuntu-minimal",
     "docker.io/${REPOSITORY}:1.11.3-ubuntu-minimal",
     "ghcr.io/${REPOSITORY}:1.11.3-ubuntu-minimal"
   ]
 }
+
