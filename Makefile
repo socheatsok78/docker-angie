@@ -1,4 +1,4 @@
-ANGIE_VERSION :=
+ANGIE_VERSION := $(shell ls -1 library | sort -V | tail -n 1)
 target := default
 
 DOCKER_BAKE_FILES := -f docker-bake.hcl
