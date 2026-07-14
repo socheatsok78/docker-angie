@@ -24,7 +24,7 @@ TEMPLATES_CHANGED=false
 echo "File changed:"
 for file in $(git diff "origin/${GITHUB_BASE_REF}" "HEAD" --name-only); do
 	echo "- ${file}"
-	if [[ "${file}" == "templates/"*"/Dockerfile" ]]; then
+	if [[ "${file}" == "templates/"*"/Dockerfile" ]] || [[ "${file}" == entrypoint/* ]]; then
 		TEMPLATES_CHANGED=true
 	fi
 	if [[ "${file}" == "library/"*"/.empty" ]] || [[ "${file}" == "library/"*"/Dockerfile" ]] || [[ "${file}" == "library/"*"/docker-bake.hcl" ]]; then
