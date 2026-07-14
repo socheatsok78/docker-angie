@@ -15,7 +15,7 @@ variable "REPOSITORY" {
 target "angie-alpine-metadata" {
   dockerfile = "templates/alpine/Dockerfile"
   args = {
-    "ANGIE_VERSION" = "1.11.8"
+    "ANGIE_VERSION" = "1.12.0"
     "ANGIE_VARIANT" = "alpine"
   }
   platforms = [
@@ -23,17 +23,21 @@ target "angie-alpine-metadata" {
     "linux/arm64",
   ]
   tags = [
-    "docker.io/${REPOSITORY}:1.11.8",
-    "ghcr.io/${REPOSITORY}:1.11.8",
-    "docker.io/${REPOSITORY}:1.11.8-alpine",
-    "ghcr.io/${REPOSITORY}:1.11.8-alpine"
+    "docker.io/${REPOSITORY}:1.12",
+    "ghcr.io/${REPOSITORY}:1.12",
+    "docker.io/${REPOSITORY}:1.12-alpine",
+    "ghcr.io/${REPOSITORY}:1.12-alpine",
+    "docker.io/${REPOSITORY}:1.12.0",
+    "ghcr.io/${REPOSITORY}:1.12.0",
+    "docker.io/${REPOSITORY}:1.12.0-alpine",
+    "ghcr.io/${REPOSITORY}:1.12.0-alpine"
   ]
 }
 
 target "angie-debian-metadata" {
   dockerfile = "templates/debian/Dockerfile"
   args = {
-    "ANGIE_VERSION" = "1.11.8"
+    "ANGIE_VERSION" = "1.12.0"
     "ANGIE_VARIANT" = "debian"
   }
   platforms = [
@@ -41,15 +45,17 @@ target "angie-debian-metadata" {
     "linux/arm64",
   ]
   tags = [
-    "docker.io/${REPOSITORY}:1.11.8-debian",
-    "ghcr.io/${REPOSITORY}:1.11.8-debian"
+    "docker.io/${REPOSITORY}:1.12-debian",
+    "ghcr.io/${REPOSITORY}:1.12-debian",
+    "docker.io/${REPOSITORY}:1.12.0-debian",
+    "ghcr.io/${REPOSITORY}:1.12.0-debian"
   ]
 }
 
 target "angie-debian-minimal-metadata" {
   dockerfile = "templates/debian-minimal/Dockerfile"
   args = {
-    "ANGIE_VERSION" = "1.11.8"
+    "ANGIE_VERSION" = "1.12.0"
     "ANGIE_VARIANT" = "debian-minimal"
   }
   platforms = [
@@ -57,15 +63,17 @@ target "angie-debian-minimal-metadata" {
     "linux/arm64",
   ]
   tags = [
-    "docker.io/${REPOSITORY}:1.11.8-debian-minimal",
-    "ghcr.io/${REPOSITORY}:1.11.8-debian-minimal"
+    "docker.io/${REPOSITORY}:1.12-debian-minimal",
+    "ghcr.io/${REPOSITORY}:1.12-debian-minimal",
+    "docker.io/${REPOSITORY}:1.12.0-debian-minimal",
+    "ghcr.io/${REPOSITORY}:1.12.0-debian-minimal"
   ]
 }
 
 target "angie-minimal-metadata" {
   dockerfile = "templates/minimal/Dockerfile"
   args = {
-    "ANGIE_VERSION" = "1.11.8"
+    "ANGIE_VERSION" = "1.12.0"
     "ANGIE_VARIANT" = "minimal"
   }
   platforms = [
@@ -73,15 +81,19 @@ target "angie-minimal-metadata" {
     "linux/arm64",
   ]
   tags = [
-    "docker.io/${REPOSITORY}:1.11.8-minimal",
-    "ghcr.io/${REPOSITORY}:1.11.8-minimal"
+    "docker.io/${REPOSITORY}:1.12-minimal",
+    "ghcr.io/${REPOSITORY}:1.12-minimal",
+    "docker.io/${REPOSITORY}:minimal",
+    "ghcr.io/${REPOSITORY}:minimal",
+    "docker.io/${REPOSITORY}:1.12.0-minimal",
+    "ghcr.io/${REPOSITORY}:1.12.0-minimal"
   ]
 }
 
 target "angie-ubuntu-metadata" {
   dockerfile = "templates/ubuntu/Dockerfile"
   args = {
-    "ANGIE_VERSION" = "1.11.8"
+    "ANGIE_VERSION" = "1.12.0"
     "ANGIE_VARIANT" = "ubuntu"
   }
   platforms = [
@@ -89,15 +101,17 @@ target "angie-ubuntu-metadata" {
     "linux/arm64",
   ]
   tags = [
-    "docker.io/${REPOSITORY}:1.11.8-ubuntu",
-    "ghcr.io/${REPOSITORY}:1.11.8-ubuntu"
+    "docker.io/${REPOSITORY}:1.12-ubuntu",
+    "ghcr.io/${REPOSITORY}:1.12-ubuntu",
+    "docker.io/${REPOSITORY}:1.12.0-ubuntu",
+    "ghcr.io/${REPOSITORY}:1.12.0-ubuntu"
   ]
 }
 
 target "angie-ubuntu-minimal-metadata" {
   dockerfile = "templates/ubuntu-minimal/Dockerfile"
   args = {
-    "ANGIE_VERSION" = "1.11.8"
+    "ANGIE_VERSION" = "1.12.0"
     "ANGIE_VARIANT" = "ubuntu-minimal"
   }
   platforms = [
@@ -105,8 +119,10 @@ target "angie-ubuntu-minimal-metadata" {
     "linux/arm64",
   ]
   tags = [
-    "docker.io/${REPOSITORY}:1.11.8-ubuntu-minimal",
-    "ghcr.io/${REPOSITORY}:1.11.8-ubuntu-minimal"
+    "docker.io/${REPOSITORY}:1.12-ubuntu-minimal",
+    "ghcr.io/${REPOSITORY}:1.12-ubuntu-minimal",
+    "docker.io/${REPOSITORY}:1.12.0-ubuntu-minimal",
+    "ghcr.io/${REPOSITORY}:1.12.0-ubuntu-minimal"
   ]
 }
 
